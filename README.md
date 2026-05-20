@@ -1,0 +1,63 @@
+## Price Tracker API
+
+A REST API for tracking product prices over time, built with FastAPI and PostgreSQL.
+Users can add products by URL, set a target price, manually refresh the current price, and view the full price history for any product.
+
+## FEATURES
+
+- Add and manage products with a target price
+- Full price history per product
+- Manual price refresh via scraper endpoint
+- Paginated product listing
+
+<img src="https://github-readme-tech-stack.vercel.app/api/cards?title=TECH+STACK&align=center&titleAlign=center&fontSize=9&lineCount=6&theme=hacker&width=200&line1=python%2Cpython%2C000af8%3B&line2=FastAPI%2CFastAPI%2Ce5128a%3B&line3=PostgreSQL%2CPostgreSQL%2C091c68%3B&line4=SQLAlchemy%2CSQLAlchemy%2C809f35%3B&line5=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI%2FPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI%2BCjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iMjI0LjAwMDAwMHB0IiBoZWlnaHQ9IjIyNC4wMDAwMDBwdCIgdmlld0JveD0iMCAwIDIyNC4wMDAwMDAgMjI0LjAwMDAwMCIKIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMjI0LjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSIKZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIj4KPHBhdGggZD0iTTk4MiAyMDU5IGMtMTM2IC0yMSAtMjYzIC05MyAtMzM3IC0xOTEgLTUyIC02OSAtNjcgLTExNiAtNjcgLTIwOCAwCi04NyAxNSAtMTQwIDU1IC0xOTIgNzIgLTkzIDE4NSAtMTQ4IDMwNiAtMTQ4IDc0IDAgMTExIDE0IDIxMSA3OSAxMTYgNzUgMjI1Cjg5IDMyMyA0MiAxMzQgLTY1IDE1OSAtMjYzIDQ3IC0zNjUgLTY2IC02MCAtMTU1IC03MCAtMjM4IC0yNyAtODkgNDYgLTk1IDE3MgotMTIgMjMxIDYwIDQzIDE2MCAxMiAxNjAgLTUwIDAgLTM4IC0yMiAtNTMgLTcxIC00OCBsLTQxIDQgMjggLTI0IGMyMiAtMTkgMzUKLTIzIDY3IC0xOSA3OCAxMSAxMDUgNzMgNjcgMTUyIC02NSAxMzMgLTI3NCAxMDQgLTM1MiAtNDggLTE2IC0zMiAtMTkgLTU0Ci0xNiAtMTA3IDMgLTU2IDkgLTc0IDM4IC0xMTYgNDAgLTU1IDEyMiAtMTA0IDE3NyAtMTA0IDQ3IDAgNDEgLTE0IC0xOSAtNDEKLTQ3IC0yMSAtNjcgLTI0IC0xODggLTI0IC0xMzEgMCAtMTM3IDEgLTE5MCAzMCAtNjYgMzYgLTEyMCAxMDkgLTEyMCAxNjIgMAo2NiA0NiAxMTMgMTA4IDExMyA0NiAtMSA4MiAtNDMgODIgLTk2IDAgLTI3IDEgLTI3IDE3IC0xMSAyNSAyNCAyMyA4OSAtMyAxMjQKLTMxIDQyIC04NiA1NyAtMTUyIDQzIC02NSAtMTQgLTEwNiAtNDggLTEyOCAtMTA1IC0yMCAtNTQgLTE0IC0xMjIgMTYgLTE3MgoyOSAtNDkgOSAtNDAgLTY2IDMwIC04NCA3NyAtMTE0IDEzNyAtMTE0IDIyNCAwIDc3IDI3IDExNiA4MCAxMTYgMzAgMCAzMSAyCjE0IDE0IC0xMCA3IC0zMyAxMyAtNTIgMTMgLTQ1IDAgLTg4IC00NSAtOTggLTEwMyBsLTcgLTQyIC0yMCA2MCBjLTM3IDExNwotMzMgMjY5IDEwIDM2MCBsMTQgMzAgLTIwIC0yMyBjLTQwIC00NiAtNjMgLTEzMCAtNjQgLTIzMiAwIC0xMTcgMjAgLTE5NiA3NQotMzAzIDEwMyAtMTk3IDI5MiAtMzI4IDUxNCAtMzU4IDc3IC0xMCAxMDQgLTEwIDE4OSA1IDI1NCA0MyA0NTAgMjEzIDUzMiA0NjEKMzQgMTA0IDM4IDI3MyA5IDM3NSAtODUgMjkwIC0zMjEgNDc4IC02MjEgNDk1IC00NCAyIC0xMDkgLTEgLTE0MyAtNnogbTQ3MwotMzEzIGMzMCAtMTMgOTUgLTg2IDk1IC0xMDggMCAtNSAtMTAgLTQgLTIyIDMgLTEzIDcgLTQxIDkgLTcxIDYgLTcxIC05IC0xMTcKMTIgLTExNyA1MiAwIDIwIDggMzUgMjIgNDUgMjggMjAgNDkgMjAgOTMgMnoiLz4KPHBhdGggZD0iTTUwNiA1NTMgYy04IC0yOSAtODYgLTM4NCAtODYgLTM5NCAwIC02IDEyIC05IDI3IC03IDE5IDIgMjkgMTAgMzMKMjggNSAyMSAxMiAyNSA0NSAyNSAzMyAwIDQwIC00IDQ1IC0yNSA0IC0xOCAxNCAtMjYgMzMgLTI4IDE1IC0yIDI3IDEgMjcgNiAwCjYgLTEzIDcwIC0yOSAxNDQgLTE2IDczIC0zNiAxNjIgLTQzIDE5OCAtOSA0NSAtMTggNjYgLTMwIDY4IC05IDIgLTE5IC01IC0yMgotMTV6IG0zOCAtMjQ1IGM3IC0zNiA1IC0zOCAtMTkgLTM4IC0yOSAwIC0yOCAtMiAtMTQgNTcgMTMgNDkgMjIgNDQgMzMgLTE5eiIvPgo8cGF0aCBkPSJNNjgwIDM2MCBsMCAtMjEwIDY1IDAgNjUgMCAwIDI5IGMwIDI3IC0zIDMwIC0zNyAzMyBsLTM4IDMgLTMgMTc4Ci0yIDE3NyAtMjUgMCAtMjUgMCAwIC0yMTB6Ii8%2BCjxwYXRoIGQ9Ik04NjAgMzYwIGwwIC0yMTAgNjUgMCA2NSAwIDAgMjkgYzAgMjcgLTMgMzAgLTM3IDMzIGwtMzggMyAtMyA1OCAtMwo1NyAzMSAwIGMyOCAwIDMxIDMgMjggMjggLTIgMjEgLTkgMjggLTMwIDMwIC0yNyAzIC0yOCA1IC0yOCA2MiBsMCA1OSAzOCAzCmMzMiAzIDM3IDcgNDAgMzEgbDMgMjcgLTY1IDAgLTY2IDAgMCAtMjEweiIvPgo8cGF0aCBkPSJNMTAzNCA1NTcgYy0yIC03IC0zIC0xMDAgLTIgLTIwNyBsMyAtMTk1IDI4IC0zIDI3IC0zIDAgMTE4IDEgMTE4CjI0IC00NSAyNCAtNDUgMTggNDIgYzEwIDI0IDIxIDQzIDI2IDQzIDQgMCA3IC01MiA3IC0xMTUgbDAgLTExNSAyNSAwIDI1IDAgMAoyMTEgYzAgMTkzIC0xIDIxMCAtMTcgMjA3IC0xMSAtMiAtMjggLTMxIC00OCAtODAgLTE2IC00MyAtMzIgLTc4IC0zNSAtNzggLTMKMCAtMjAgMzYgLTM5IDgwIC0zMiA3NSAtNTUgOTggLTY3IDY3eiIvPgo8cGF0aCBkPSJNMTMwMCAzNjAgbDAgLTIxMiA0OCA3IGM1NyA4IDkwIDI4IDEwMiA2MSAxNSAzOSAxMiA5NyAtNiAxMjMgLTEzCjE4IC0xNCAyOCAtNSA0NyAzMyA3MiAtMjIgMTY4IC0xMDMgMTgxIGwtMzYgNiAwIC0yMTN6IG04OSAxMDUgYzEyIC0yNSAxMgotMzIgMCAtNTMgLTIyIC0zOSAtMzQgLTI3IC0zNyAzNCAtMyA2MyAxMiA3MCAzNyAxOXogbS0xIC0xNDcgYzE3IC0xNyAxNSAtNzQKLTQgLTkyIC0yNCAtMjUgLTM0IC0xMCAtMzQgNTAgMCA1NSAxMiA2OCAzOCA0MnoiLz4KPHBhdGggZD0iTTE1MTIgMzYzIGwzIC0yMDggMjggLTMgMjcgLTMgMCAyMTAgMCAyMTEgLTMwIDAgLTMwIDAgMiAtMjA3eiIvPgo8cGF0aCBkPSJNMTcwNSA1NTYgYy0xNyAtOCAtNDAgLTMyIC01NSAtNTcgLTIxIC0zOCAtMjUgLTU3IC0yNSAtMTM0IDAgLTExNAoyMCAtMTU5IDg2IC0xOTMgbDQ0IC0yMyAzIDI2IGMzIDE5IC00IDMyIC0yMyA0NyAtMzcgMjkgLTU1IDc2IC01NSAxNDUgMCA2NwoyNCAxMjMgNTggMTM4IDE1IDcgMjIgMTggMjIgMzcgMCAzMSAtMTAgMzQgLTU1IDE0eiIvPgo8L2c%2BCjwvc3ZnPgo%3D%2CAlembic%2C%3B&line6=Pydantic%2CPydantic%2C182ea4%3B" alt="TECH STACK" />
+
+## Limitations
+
+Price scraping uses a generic CSS class heuristic — it searches for HTML elements whose class name contains the word price.
+
+## Project Structure
+
+```
+app/
+├── api/          # route handlers
+├── db/           # SQLAlchemy models and database config
+├── schemas/      # Pydantic request/response schemas
+├── services/     # business logic
+alembic/          # database migrations
+```
+
+## Installation
+
+1. Clone the repository
+2. Create and activate a virtual environment
+3. Install dependencies from requirements.txt
+```
+pip install -r requirements.txt
+```
+4. Configure environment variables
+Create a .env file in the project root:
+```
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=price_tracker
+```
+5. Run database migrations
+6. Start the server
+
+## API Endpoints
+
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/products` | List all products (paginated) |
+| `POST` | `/products` | Add a new product |
+| `GET` | `/products/{id}` | Get a product by ID |
+| `PATCH` | `/products/{id}` | Update target price |
+| `DELETE` | `/products/{id}` | Delete a product |
+| `POST` | `/products/{id}/refresh` | Scrape and update current price |
+| `GET` | `/products/{id}/history` | Get full price history |
+| `GET` | `/health` | Health check |
+```
